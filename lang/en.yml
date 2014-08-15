@@ -1,0 +1,3 @@
+en:
+  BootstrapFileField:
+    CHOOSEFILE: 'Choose File' # Choose File Text on Upload Button

@@ -1,0 +1,9 @@
+name: bootstrapfilefield
+---
+BootstrapFileField:
+  defaultConfig:
+    dataIcon: true
+    dataInput: true
+    dataClassButton: 'btn btn-primary'
+    dataClassInput: 'form-control'
+    dataClassIcon: 'glyphicon glyphicon-folder-open'

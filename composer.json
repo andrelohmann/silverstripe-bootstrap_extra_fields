@@ -1,0 +1,9 @@
+{
+	"name": "andrelohmann-silverstripe/bootstrap_extra_fields",
+	"type": "silverstripe-module",
+	"require": {
+		"php": ">=5.3.2",
+		"composer/installers": "*"
+	},
+	"minimum-stability": "stable"
+}
