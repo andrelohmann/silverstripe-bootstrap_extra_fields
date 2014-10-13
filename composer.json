@@ -1,6 +1,15 @@
 {
 	"name": "andrelohmann-silverstripe/bootstrap_extra_fields",
 	"type": "silverstripe-module",
+	"description": "Silverstripe extra Fieldtypes for Bootstrap",
+	"license": "BSD-3-Clause",
+	"keywords": ["silverstripe", "framework"],
+	"authors": [
+		{
+			"name": "Andre Lohmann",
+			"homepage": "https://github.com/andrelohmann"
+		}
+	],
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": "*"
