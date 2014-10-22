@@ -120,7 +120,7 @@ $(function () {
     $('#Modal_{$name}').modal('show');
 });
 JS;
-            Requirements::customScript($js);
+            Requirements::customScript($js, 'BootstrapModalForm_hasErrorJs');
         }
         
         $this->setTemplate('BootstrapModalForm');

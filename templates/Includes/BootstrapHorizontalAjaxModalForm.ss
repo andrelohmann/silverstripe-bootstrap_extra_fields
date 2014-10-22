@@ -1,7 +1,3 @@
-$ModalFormAction.Field
-<div class="modal fade" id="Modal_{$FormName}" tabindex="-1" role="dialog" aria-labelledby="Modal_{$FormName}_Label" aria-hidden="true">
-    <div class="modal-dialog $Size">
-        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="Modal_{$FormName}_Label">$Title</h4>
@@ -63,6 +59,3 @@ $ModalFormAction.Field
             <% if $IncludeFormTag %>
             </form>
             <% end_if %>
-        </div>
-    </div>
-</div>
