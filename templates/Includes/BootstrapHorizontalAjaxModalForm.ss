@@ -6,7 +6,7 @@
             <form $AttributesHTML role="form">
             <% end_if %>
             <div class="modal-body">
-                <div class="row">
+                <div>
                 <% if $Message %>
                     <div class="col-md-12">
                     <% if $MessageType="good" %>
@@ -44,15 +44,15 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="row">
+                <div>
                 <% if $Actions %>
-                <% loop $Actions %>
-                <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                $Field
-                </div>
-                </div>
-                <% end_loop %>
+                    <% loop $Actions %>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                $Field
+                            </div>
+                        </div>
+                    <% end_loop %>
                 <% end_if %>
                 </div>
             </div>

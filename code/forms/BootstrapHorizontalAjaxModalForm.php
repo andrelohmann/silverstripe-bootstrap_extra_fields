@@ -93,7 +93,7 @@ class BootstrapHorizontalAjaxModalForm extends BootstrapAjaxModalForm {
         );
         
         if(Director::is_ajax()){
-            $this->setTemplate('BootstrapHorizontalAjaxModalForm');
+            $this->setTemplate('BootstrapHorizontalAjaxModalForm')->addExtraClass('form-horizontal');
         }else{
             Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
             Requirements::javascript('bootstrap_extra_fields/javascript/tooltip.js');
