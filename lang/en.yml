@@ -1,3 +1,7 @@
 en:
   BootstrapFileField:
     CHOOSEFILE: 'Choose File' # Choose File Text on Upload Button
+  BootstrapLoadingFormAction:
+    LOADING: 'Loading...'
+  BootstrapAjaxModalForm:
+    LOADING: 'Loading...'

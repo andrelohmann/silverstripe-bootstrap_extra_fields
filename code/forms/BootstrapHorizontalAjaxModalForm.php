@@ -21,6 +21,7 @@
  * <code>
  * $name = $this->FormName();
  * $action = $this->FormAction().'/'.$controller->urlParams['ID'];
+ * $loading = _t('BootstrapAjaxModalForm.LOADING', 'BootstrapAjaxModalForm.LOADING');
  * Requirements::block('BootstrapAjaxModalForm_Js');
  * $js = <<<JS
  * (function($){
@@ -29,7 +30,7 @@
  *          delegation: true,
  *          target: '#Modal_{$name} .modal-dialog .modal-content',
  *          beforeSubmit: function(data, form, options){
- *              $('#{$name} [type=submit]').prop("disabled", true);
+ *              $('#{$name} [type=submit]').prop("disabled", true).html('{$loading}');
  *          }
  *      });
  *  });

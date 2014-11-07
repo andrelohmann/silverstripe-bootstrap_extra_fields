@@ -1,3 +1,7 @@
 de:
   BootstrapFileField:
     CHOOSEFILE: 'Datai auswählen' # Choose File Text on Upload Button
+  BootstrapLoadingFormAction:
+    LOADING: 'Laden...'
+  BootstrapAjaxModalForm:
+    LOADING: 'Laden...'
