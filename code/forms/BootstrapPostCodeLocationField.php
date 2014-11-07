@@ -31,13 +31,13 @@ class BootstrapPostCodeLocationField extends PostCodeLocationField {
 	
 	public function Field($properties = array()) {
 		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
-		Requirements::javascript('http://maps.google.com/maps/api/js?sensor=true');
+                
+                if(GoogleMaps::getApiKey()) Requirements::javascript('https://maps.googleapis.com/maps/api/js?sensor=false&key='.GoogleMaps::getApiKey());  // don't use Sensor on this Field
+                else  Requirements::javascript('https://maps.googleapis.com/maps/api/js?sensor=false');
 		
 		$name = $this->getName();
                 $this->fieldPostcode->setPlaceholder(_t('GeoForm.FIELDLABELPOSTCODE', 'ZIP/Postcode'));
                 $this->fieldCountry->setPlaceholder(_t('GeoForm.FIELDLABELCOUNTRY', 'City/Country'));
-		
-		$mapkey = GoogleMaps::$mapkey;
 		
 		// set caption if required
 		$js = <<<JS
