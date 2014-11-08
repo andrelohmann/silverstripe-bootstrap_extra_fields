@@ -32,12 +32,12 @@ class BootstrapPostCodeLocationField extends PostCodeLocationField {
 	public function Field($properties = array()) {
 		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
                 
-                if(GoogleMaps::getApiKey()) Requirements::javascript('https://maps.googleapis.com/maps/api/js?sensor=false&key='.GoogleMaps::getApiKey());  // don't use Sensor on this Field
-                else  Requirements::javascript('https://maps.googleapis.com/maps/api/js?sensor=false');
-		
-		$name = $this->getName();
-                $this->fieldPostcode->setPlaceholder(_t('GeoForm.FIELDLABELPOSTCODE', 'ZIP/Postcode'));
-                $this->fieldCountry->setPlaceholder(_t('GeoForm.FIELDLABELCOUNTRY', 'City/Country'));
+                if(GoogleMaps::getApiKey()) Requirements::javascript('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang().'&key='.GoogleMaps::getApiKey());  // don't use Sensor on this Field
+                else  Requirements::javascript('https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang());
+                
+                $name = $this->getName();
+                $this->fieldPostcode->setPlaceholder(_t('PostCodeLocationField.ZIPCODEPLACEHOLDER', 'ZIP/Postcode'));
+                $this->fieldCountry->setPlaceholder(_t('PostCodeLocationField.CITYCOUNTRYPLACEHOLDER', 'City/Country'));
 		
 		// set caption if required
 		$js = <<<JS

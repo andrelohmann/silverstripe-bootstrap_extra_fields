@@ -34,19 +34,19 @@ class BootstrapFileField extends FileField {
 		 * 
 		 * @var boolean
 		 */
-		'dataClassButton' => 'btn btn-primary',
+		'dataButtonName' => 'btn btn-primary',
                 /**
 		 * Button Class
 		 * 
 		 * @var boolean
 		 */
-		'dataClassInput' => 'input-lg',
+		'dataSize' => 'md',
                 /**
 		 * Button Class
 		 * 
 		 * @var boolean
 		 */
-		'dataClassIcon' => 'glyphicon glyphicon-folder-open'
+		'dataIconName' => 'glyphicon-folder-open'
 	);
 
 	/**
@@ -107,11 +107,11 @@ class BootstrapFileField extends FileField {
                 
                 $this->setAttribute('data-input', $this->getConfig('dataInput'));
                 
-                $this->setAttribute('data-classButton', $this->getConfig('dataClassButton'));
+                $this->setAttribute('data-ButtonName', $this->getConfig('dataButtonName'));
                 
-                $this->setAttribute('data-classInput', $this->getConfig('dataClassInput'));
+                $this->setAttribute('data-size', $this->getConfig('dataSize'));
                 
-                $this->setAttribute('data-classIcon', $this->getConfig('dataClassIcon'));
+                $this->setAttribute('data-IconName', $this->getConfig('dataIconName'));
                 
                 // Set Button Title
                 $this->setAttribute('data-buttonText', _t('BootstrapFileField.CHOOSEFILE', 'BootstrapFileField.CHOOSEFILE'));
