@@ -5,3 +5,5 @@ de:
     LOADING: 'Laden...'
   BootstrapAjaxModalForm:
     LOADING: 'Laden...'
+  BootstrapAjaxForm:
+    LOADING: 'Laden...'

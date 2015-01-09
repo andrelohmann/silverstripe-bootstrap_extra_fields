@@ -1,18 +1,16 @@
 <?php
 /**
- * Defines an Ajax submitted Form within a Bootstrap Modal Window
+ * Defines an Ajax submitted Form
  * 
  * <b>Usage</b>
  * 
  * <code>
- * new BootstrapHorizontalAjaxModalForm(
+ * new BootstrapHorizontalAjaxForm(
  *      $this->controller,
  * 	$name = "MyForm",
  * 	$fields,
  *      $actions,
- *      $validator,
- *      $title = 'My Form Modal Title',
- *      new BootstrapModalFormAction($Title = 'Open My Modal Form')
+ *      $validator
  * )
  * </code>
  * 
@@ -21,33 +19,25 @@
  * <code>
  * $name = $this->FormName();
  * $action = $this->FormAction().'/'.$controller->urlParams['ID'];
- * $loading = _t('BootstrapAjaxModalForm.LOADING', 'BootstrapAjaxModalForm.LOADING');
- * Requirements::block('BootstrapAjaxModalForm_Js_'.$this->FormName());
+ * $loading = _t('BootstrapAjaxForm.LOADING', 'BootstrapAjaxForm.LOADING');
+ * Requirements::block('BootstrapAjaxForm_Js_'.$this->FormName());
  * $js = <<<JS
  * (function($){
  *  $(function(){
  *      $('#{$name}').ajaxForm({
  *          delegation: true,
- *          target: '#Modal_{$name} .modal-dialog .modal-content',
+ *          target: '#AjaxForm_{$name}',
  *          beforeSubmit: function(data, form, options){
  *              $('#{$name} [type=submit]').prop("disabled", true).html('{$loading}');
  *          }
  *      });
  *  });
- *  $(function(){
- *      $('#Modal_{$name}').on('show.bs.modal', function(e){
- *          $('#Modal_{$name} .modal-dialog .modal-content').load('{$action}');
- *      });
- *      $('#Modal_{$name}').on('hidden.bs.modal', function(e){
- *          $('#Modal_{$name} .modal-dialog .modal-content').html('');
- *      });
- *  });
  * })(jQuery);
  * JS;
- * Requirements::customScript($js, 'Custom_BootstrapAjaxModalForm_Js_'.$this->FormName());
+ * Requirements::customScript($js, 'Custom_BootstrapAjaxForm_Js_'.$this->FormName());
  * </code>
  * 
- * Also you can controll the retur of your action
+ * Also you can controll the return of your action
  * 
  * <code>
  * public function doSend(array $data){
@@ -66,40 +56,37 @@
  * In the Controller the Form needs to be returned by AjaxReturn Method
  * 
  * <code>
- * public function InheritedBootstrapAjaxModalForm(){
+ * public function InheritedBootstrapAjaxForm(){
  *      // returnes the rendered form or the Form Object dependent on the request
- *      return InheritedBootstrapAjaxModalForm::create($this, "InheritedBootstrapAjaxModalForm")->AjaxReturn($this->request);
+ *      return InheritedBootstrapAjaxForm::create($this, "InheritedBootstrapAjaxForm")->AjaxReturn($this->request);
  * }
  * </code>
  * 
  * @package bootstrap_extra_fields
  * @subpackage forms
  */
-class BootstrapHorizontalAjaxModalForm extends BootstrapAjaxModalForm {
+class BootstrapHorizontalAjaxForm extends BootstrapAjaxForm {
     
     public function IsHorizontal(){
         return true;
     }
     
-    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction){
+    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null){
          
         parent::__construct(
                 $controller,
                 $name,
                 $fields,
                 $actions,
-                $validator,
-                $Title,
-                $ModalFormAction
+                $validator
         );
         
-        if(Director::is_ajax()){
-            $this->setTemplate('BootstrapHorizontalAjaxModalForm')->addExtraClass('form-horizontal');
-        }else{
+        if(!Director::is_ajax()){
             Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
             Requirements::javascript('bootstrap_extra_fields/javascript/tooltip.js');
-            $this->setTemplate('BootstrapHorizontalModalForm')->addExtraClass('form-horizontal')->setLarge();
+            $this->setTemplate('BootstrapHorizontalAjaxForm')->addExtraClass('form-horizontal');
+        }else{
+            $this->setTemplate('BootstrapHorizontalForm')->addExtraClass('form-horizontal');
         }
     }
-    
 }
