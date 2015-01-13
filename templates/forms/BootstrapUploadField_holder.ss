@@ -1,17 +1,17 @@
 <% if $IsHorizontal %>
     <div class="form-group field<% if $extraClass %> $extraClass<% end_if %>" id="$Name">
         <% if $Title && $hasData %>
-            <label class="col-md-2 control-label" for="$id">$Title</label>
+            <label class="col-sm-2 control-label" for="$id">$Title</label>
         <% else %>
-            <div class="col-md-2"></div>
+            <div class="col-sm-2"></div>
         <% end_if %>
         
-        <div class="col-md-9">
+        <div class="col-sm-9">
             <div class="form-control"><div class="middleColumn">$Field</div></div>
         </div>
         
         <% if $RightTitle %>
-            <div class="col-md-1">
+            <div class="col-sm-1">
                 <span class="help-inline"><a href="#" data-toggle="tooltip" title="$RightTitle"><i class="glyphicon glyphicon-question-sign"></i></a></span>
             </div>
         <% end_if %>
@@ -19,8 +19,8 @@
 
     <% if $Description %>
     <div class="form-group">
-        <div class="col-md-2"></div>
-        <div class="col-md-9">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-9">
             <div class="alert alert-info">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 $Description
@@ -31,8 +31,8 @@
     
     <% if $Message %>
         <div class="form-group">
-            <div class="col-md-2"></div>
-            <div class="col-md-9">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-9">
             <% if $MessageType="good" %>
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

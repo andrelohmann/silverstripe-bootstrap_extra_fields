@@ -1,4 +1,4 @@
-<div <% if $Name %>id="$Name"<% end_if %> class="col-md-$ColumnWidth<% if $extraClass %> $extraClass<% end_if %>">
+<div <% if $Name %>id="$Name"<% end_if %> class="col-sm-$ColumnWidth<% if $extraClass %> $extraClass<% end_if %>">
     <div class="form-group">
         <% if $Title %><label class="left">$Title</label><% end_if %>
 	<% loop $FieldList %>

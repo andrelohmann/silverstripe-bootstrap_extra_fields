@@ -37,7 +37,7 @@
     <% if $Actions %>
     <% loop $Actions %>
     <div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
+    <div class="col-sm-offset-2 col-sm-10">
     $Field
     </div>
     </div>

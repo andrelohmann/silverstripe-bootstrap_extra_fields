@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div>
                 <% if $Message %>
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                     <% if $MessageType="good" %>
                         <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -48,7 +48,7 @@
                 <% if $Actions %>
                     <% loop $Actions %>
                         <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
+                            <div class="col-sm-offset-2 col-sm-10">
                                 $Field
                             </div>
                         </div>

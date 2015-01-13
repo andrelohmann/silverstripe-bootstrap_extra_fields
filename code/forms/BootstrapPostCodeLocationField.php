@@ -128,10 +128,10 @@ JS;
                 return $this->fieldLatitude->Field().
                              $this->fieldLongditude->Field().
                              '<div class="row">'.
-                             '<div class="col-md-6">'.
+                             '<div class="col-sm-6">'.
                              $this->fieldPostcode->Field().
                              '</div>'.
-                             '<div class="col-md-6">'.
+                             '<div class="col-sm-6">'.
                              $this->fieldCountry->Field().
                              '</div>'.
                              '</div>';

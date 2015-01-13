@@ -35,10 +35,10 @@ class BootstrapLocationField extends LocationField {
                 $this->fieldLongditude->setPlaceholder(_t('GeoForm.FIELDLABELLONGDITUDE', 'Longditude'));
                 
                 return '<div class="row">'.
-                             '<div class="col-md-6">'.
+                             '<div class="col-sm-6">'.
                              $this->fieldLatitude->Field().
                              '</div>'.
-                             '<div class="col-md-6">'.
+                             '<div class="col-sm-6">'.
                              $this->fieldLongditude->Field().
                              '</div>'.
                              '</div>';
