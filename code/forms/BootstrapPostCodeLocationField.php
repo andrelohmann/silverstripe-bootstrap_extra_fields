@@ -123,7 +123,7 @@ function PostcodeIsSingleLocality(Response){
     return (counter == 1) ? locality : null;
 }
 JS;
-		Requirements::customScript($js);
+		Requirements::customScript($js, 'BootstrapPostCodeLocationField_Css_'.$this->ID());
                 
                 return $this->fieldLatitude->Field().
                              $this->fieldLongditude->Field().

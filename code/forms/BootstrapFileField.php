@@ -102,6 +102,9 @@ class BootstrapFileField extends FileField {
 		);
                 
                 $this->addExtraClass('filestyle');
+	}
+
+	public function Field($properties = array()) {
                 
                 $this->setAttribute('data-icon', $this->getConfig('dataIcon'));
                 
@@ -115,16 +118,12 @@ class BootstrapFileField extends FileField {
                 
                 // Set Button Title
                 $this->setAttribute('data-buttonText', _t('BootstrapFileField.CHOOSEFILE', 'BootstrapFileField.CHOOSEFILE'));
-	}
-
-	public function Field($properties = array()) {
             
             // Overwrite Button Title
             if($this->button_title) $this->setAttribute('data-buttonText', $this->button_title);
             
             Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
             Requirements::javascript('bootstrap_extra_fields/javascript/bootstrap-filestyle.min.js');
-            //Requirements::css(FRAMEWORK_DIR . '/css/ConfirmedPasswordField.css');
             
             // Fetch the Field Record
 	    if($this->form) $record = $this->form->getRecord();

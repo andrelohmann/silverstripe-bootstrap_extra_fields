@@ -53,7 +53,7 @@ $(function () {
     $('#{$name}').datetimepicker({{$language}});
 });
 JS;
-		Requirements::customScript($js);
+		Requirements::customScript($js, 'BootstrapDatetimepickerForm_Js_'.$this->ID());
                 
                 return parent::Field($properties);
 	}

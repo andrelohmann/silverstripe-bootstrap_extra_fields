@@ -57,6 +57,7 @@ class BootstrapConfirmedPasswordField extends ConfirmedPasswordField {
 					$field->setAttribute($name, $value);
 				}
 			}
+                        $field->addExtraClass($this->extraClass());
 			$content .= $field->FieldHolder();
 		}
 
@@ -84,6 +85,7 @@ class BootstrapConfirmedPasswordField extends ConfirmedPasswordField {
 					$field->setAttribute($name, $value);
 				}
 			}
+                        $field->addExtraClass($this->extraClass());
 			$Fields->add($field);
 		}
 		

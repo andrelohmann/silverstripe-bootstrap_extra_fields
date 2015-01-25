@@ -39,7 +39,7 @@ class BootstrapGeoLocationField extends GeoLocationField {
     });
 })(jQuery);
 JS;
-                Requirements::customScript($js, 'BootstrapGeoLocationField_Js');
+                Requirements::customScript($js, 'BootstrapGeoLocationField_Js_'.$this->ID());
         
                 $css = <<<CSS
 /* make the location suggest dropdown appear above dialog */
@@ -47,7 +47,7 @@ JS;
     z-index: 2000 !important;
 }
 CSS;
-                Requirements::customCSS($css, 'BootstrapGeoLocationField_Css');
+                Requirements::customCSS($css, 'BootstrapGeoLocationField_Css_'.$this->ID());
                 
                 return $this->fieldLatitude->Field().
                              $this->fieldLongditude->Field().
