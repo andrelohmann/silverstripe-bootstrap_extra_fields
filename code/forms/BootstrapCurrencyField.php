@@ -12,19 +12,23 @@ class BootstrapCurrencyField extends NumericField {
 	/**
 	 * displays the value in its current locality format
 	 */
-	public function setValue($val) {
-                
-                require_once THIRDPARTY_PATH."/Zend/Locale/Format.php";
-                    
-		if(is_numeric($val)){		
-                    $locale = new Zend_Locale(i18n::get_locale());
-                    $this->value = Zend_Locale_Format::toNumber($val, array('locale' => $locale));
-                }else if(Zend_Locale_Format::isNumber(
-                        trim($val), 
+	public function setValue($value, $data = array()) {
+		require_once THIRDPARTY_PATH."/Zend/Locale/Format.php";
+
+		// If passing in a non-string number, or a value
+		// directly from a dataobject then localise this number
+		if ((is_numeric($value) && !is_string($value)) || 
+			($value && $data instanceof DataObject)
+		){
+			$locale = new Zend_Locale($this->getLocale());
+			$this->value = Zend_Locale_Format::toNumber($value, array('locale' => $locale));
+		}else if(Zend_Locale_Format::isNumber(
+                        $this->clean($value), 
 			array('locale' => i18n::get_locale())
                 )){
-                    $this->value = trim($val);
-                }
+			// If an invalid number, store it anyway, but validate() will fail
+			$this->value = $this->clean($value);
+		}
 		return $this;
 	}
 	
