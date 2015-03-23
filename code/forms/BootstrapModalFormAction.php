@@ -36,10 +36,12 @@ class BootstrapModalFormAction extends FormAction {
 	 * @param title The label on the button
 	 * @param form The parent form, auto-set when the field is placed inside a form 
 	 */
-	public function __construct($title = "") {
+	public function __construct($title = null) {
 		$this->action = "action_modalToggle";
 		
 		parent::__construct($this->action, $title, null, null);
+                
+                if($title != null) $this->setButtonContent($title);
 	}
 
 	public function setTarget($target) {
