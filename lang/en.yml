@@ -7,3 +7,6 @@ en:
     LOADING: 'Loading...'
   BootstrapAjaxForm:
     LOADING: 'Loading...'
+  BootstrapCaptchaField:
+    VALIDATION: 'Invalid code, try again.'
+    PLACEHOLDER: 'Type the code shown'
