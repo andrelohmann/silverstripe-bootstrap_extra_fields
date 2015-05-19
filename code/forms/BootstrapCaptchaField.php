@@ -23,25 +23,34 @@ class BootstrapCaptchaField extends TextField {
             $background_color = imagecolorallocate($image, 255, 255, 255);  
             imagefilledrectangle($image,0,0,200,50,$background_color);
             
-            $line_color = imagecolorallocate($image, 64,64,64); 
-            for($i=0;$i<10;$i++) {
+            $line_color = imagecolorallocate($image, 128,128,128); 
+            for($i=0;$i<5;$i++) {
                 imageline($image,0,rand()%50,200,rand()%50,$line_color);
             }
             
-            $pixel_color = imagecolorallocate($image, 0,0,255);
-            for($i=0;$i<1000;$i++) {
+            $pixel_color = imagecolorallocate($image, 0,0,128);
+            for($i=0;$i<500;$i++) {
                 imagesetpixel($image,rand()%200,rand()%50,$pixel_color);
             }
             
-            $text_color = imagecolorallocate($image, 0,0,0);
+            $pixel_color = imagecolorallocate($image, 128,0,0);
+            for($i=0;$i<500;$i++) {
+                imagesetpixel($image,rand()%200,rand()%50,$pixel_color);
+            }
+            
+            $text_color = imagecolorallocate($image, 255,0,0);
             $i=0;
             foreach(str_split($string) as $letter){
                 imagestring($image, 5,  5+($i*30), 20, $letter, $text_color);
                 $i++;
             }
             
+            $resized = imagecreatetruecolor(300, 75);
+            
+            imagecopyresampled($resized, $image, 0, 0, 0, 0, 300, 75, 200, 50);
+            
             ob_start();
-            imagepng($image);
+            imagepng($resized);
             $contents = ob_get_contents();
             ob_end_clean();
             
@@ -83,7 +92,7 @@ class BootstrapCaptchaField extends TextField {
 			return true;
 		}
 		
-		if($this->value == Session::get('BootstrapCaptchaFieldValue')){
+		if(strtolower($this->value) == strtolower(Session::get('BootstrapCaptchaFieldValue'))){
                     $this->value == '';
                     Session::clear('BootstrapCaptchaFieldValue');
                     return true;
