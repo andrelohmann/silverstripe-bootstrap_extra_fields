@@ -13,13 +13,15 @@ window.tmpl.cache['ss-uploadfield-uploadtemplate'] = tmpl(
 					'{% } %}' + 
 					'<div class="clear"><!-- --></div>' + 
 				'</label>' +
+				'{% if (!file.error) { %}' +
+                                    '<div class="ss-uploadfield-item-actions">' +                             				
+                                            '<div class="ss-uploadfield-item-progress"><div class="ss-uploadfield-item-progressbar"><div class="ss-uploadfield-item-progressbarvalue"></div></div></div>' +
+                                            '{% if (!o.options.autoUpload) { %}' + 
+                                                    '<div class="ss-uploadfield-item-start start"><button class="icon icon-16 btn btn-info" data-icon="navigation">' + ss.i18n._t('UploadField.START', 'Start') + '</button></div>' + 
+                                            '{% } %}' +                                    
+                                    '</div>' +
+                                '{% } %}' + 
 				'<div class="ss-uploadfield-item-actions">' + 
-					'{% if (!file.error) { %}' +						
-						'<div class="ss-uploadfield-item-progress"><div class="ss-uploadfield-item-progressbar"><div class="ss-uploadfield-item-progressbarvalue"></div></div></div>' +
-						'{% if (!o.options.autoUpload) { %}' + 
-							'<div class="ss-uploadfield-item-start start"><button class="icon icon-16 btn btn-info" data-icon="navigation">' + ss.i18n._t('UploadField.START', 'Start') + '</button></div>' + 
-						'{% } %}' +
-					'{% } %}' + 	
 					'<div class="ss-uploadfield-item-cancel cancel">' +
 						'<button class="icon icon-16 btn btn-danger" data-icon="minus-circle" title="' + ss.i18n._t('UploadField.CANCELREMOVE', 'Cancel/Remove') + '">' + ss.i18n._t('UploadField.CANCELREMOVE', 'Cancel/Remove') + '</button>' +
 					'</div>' +
