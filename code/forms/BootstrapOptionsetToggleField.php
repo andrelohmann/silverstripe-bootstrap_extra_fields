@@ -33,24 +33,24 @@ class BootstrapOptionsetToggleField extends OptionsetField {
 	 */
 	public function setSource($source) {
 		$this->source = $source;
-                if(is_array($this->source)){
-                    $this->children = new FieldList();
-                    foreach($source as $value => $obj) {
-                        foreach($obj['FieldList'] as $f){
-                            $this->children->push($f);
-                        }
-                    }
-                }
+		if(is_array($this->source)){
+			$this->children = new FieldList();
+			foreach($source as $value => $obj) {
+				foreach($obj['FieldList'] as $f){
+					$this->children->push($f);
+				}
+			}
+		}
 		return $this;
 	}
 	
 
 	public function Options() {
             
-                Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
+        Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
 		Requirements::javascript('bootstrap_extra_fields/javascript/BootstrapOptionsetToggleField.js');
 		
-                $source = $this->getSource();
+        $source = $this->getSource();
 		$odd = 0;
 		$options = array();
 		
@@ -292,21 +292,21 @@ class BootstrapOptionsetToggleField extends OptionsetField {
                 return $this->AlternateFields($this->children);
 	}
         
-        protected function AlternateFields(FieldList $fields){
-            $Fields = new FieldList();
-                
-            foreach($fields as $field) {
-                $field->setDisabled($this->isDisabled());
-                $field->setReadonly($this->isReadonly());
-		if(count($this->attributes)){
-                    foreach($this->attributes as $name => $value) {
-                        $field->setAttribute($name, $value);
-                    }
+	protected function AlternateFields(FieldList $fields){
+		$Fields = new FieldList();
+
+		foreach($fields as $field) {
+			$field->setDisabled($this->isDisabled());
+			$field->setReadonly($this->isReadonly());
+	if(count($this->attributes)){
+				foreach($this->attributes as $name => $value) {
+					$field->setAttribute($name, $value);
+				}
+	}
+	$Fields->add($field);
 		}
-		$Fields->add($field);
-            }
-            return $Fields;
-        }
+		return $Fields;
+	}
 
 	public function validate($validator) {
                 $valid = parent::validate($validator);

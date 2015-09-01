@@ -23,9 +23,9 @@ class BootstrapCurrencyField extends NumericField {
 			$locale = new Zend_Locale($this->getLocale());
 			$this->value = Zend_Locale_Format::toNumber($value, array('locale' => $locale));
 		}else if(Zend_Locale_Format::isNumber(
-                        $this->clean($value), 
+            $this->clean($value), 
 			array('locale' => i18n::get_locale())
-                )){
+        )){
 			// If an invalid number, store it anyway, but validate() will fail
 			$this->value = $this->clean($value);
 		}
@@ -40,21 +40,21 @@ class BootstrapCurrencyField extends NumericField {
 		
 		require_once THIRDPARTY_PATH."/Zend/Locale/Format.php";
                 
-                $locale = new Zend_Locale(i18n::get_locale());
-                $number = Zend_Locale_Format::getNumber($this->value, array('locale' => $locale));
+        $locale = new Zend_Locale(i18n::get_locale());
+        $number = Zend_Locale_Format::getNumber($this->value, array('locale' => $locale));
 		return $number;
 	}
         
-        public function CurrencySymbol(){
-            
-            require_once THIRDPARTY_PATH."/Zend/Currency.php";
-            
-            $locale = new Zend_Locale(i18n::get_locale());
-            $symbol = new Zend_Currency($locale);
-            return $symbol->getSymbol();
-        }
-        
-        public function setEmpty(){
-            $this->value = null;
-        }
+	public function CurrencySymbol(){
+
+		require_once THIRDPARTY_PATH."/Zend/Currency.php";
+
+		$locale = new Zend_Locale(i18n::get_locale());
+		$symbol = new Zend_Currency($locale);
+		return $symbol->getSymbol();
+	}
+
+	public function setEmpty(){
+		$this->value = null;
+	}
 }

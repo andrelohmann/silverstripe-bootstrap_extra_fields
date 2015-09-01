@@ -106,46 +106,46 @@ class BootstrapFileField extends FileField {
 
 	public function Field($properties = array()) {
                 
-                $this->setAttribute('data-icon', $this->getConfig('dataIcon'));
-                
-                $this->setAttribute('data-input', $this->getConfig('dataInput'));
-                
-                $this->setAttribute('data-ButtonName', $this->getConfig('dataButtonName'));
-                
-                $this->setAttribute('data-size', $this->getConfig('dataSize'));
-                
-                $this->setAttribute('data-IconName', $this->getConfig('dataIconName'));
-                
-                // Set Button Title
-                $this->setAttribute('data-buttonText', _t('BootstrapFileField.CHOOSEFILE', 'BootstrapFileField.CHOOSEFILE'));
+		$this->setAttribute('data-icon', $this->getConfig('dataIcon'));
+
+		$this->setAttribute('data-input', $this->getConfig('dataInput'));
+
+		$this->setAttribute('data-ButtonName', $this->getConfig('dataButtonName'));
+
+		$this->setAttribute('data-size', $this->getConfig('dataSize'));
+
+		$this->setAttribute('data-IconName', $this->getConfig('dataIconName'));
+
+		// Set Button Title
+		$this->setAttribute('data-buttonText', _t('BootstrapFileField.CHOOSEFILE', 'BootstrapFileField.CHOOSEFILE'));
             
-            // Overwrite Button Title
-            if($this->button_title) $this->setAttribute('data-buttonText', $this->button_title);
+		// Overwrite Button Title
+		if($this->button_title) $this->setAttribute('data-buttonText', $this->button_title);
             
-            Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
-            Requirements::javascript('bootstrap_extra_fields/javascript/bootstrap-filestyle.min.js');
+		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
+		Requirements::javascript('bootstrap_extra_fields/javascript/bootstrap-filestyle.min.js');
             
             // Fetch the Field Record
 	    if($this->form) $record = $this->form->getRecord();
 	    $fieldName = $this->name;
 	    if(isset($record)&&$record) {
 	    	$fileField = $record->$fieldName();
-                if($fileField && $fileField->exists()){
-                    if($fileField->hasMethod('Thumbnail') && $fileField->Thumbnail()) $Image = $fileField->Thumbnail()->getTag();
-                    else if($fileField->CMSThumbnail()) $Image = $fileField->CMSThumbnail();
-                    else $Image = false;
-                }else{
-                    $Image = false;
-                }
-            }else{
-                $Image = false;
-            }
-            
-            $properties = array_merge($properties, array(
-                'MaxFileSize' => $this->getValidator()->getAllowedMaxFileSize(),
-                'Image' => $Image
-            ));
-		
-            return parent::Field($properties);
+			if($fileField && $fileField->exists()){
+				if($fileField->hasMethod('Thumbnail') && $fileField->Thumbnail()) $Image = $fileField->Thumbnail()->getTag();
+				else if($fileField->CMSThumbnail()) $Image = $fileField->CMSThumbnail();
+				else $Image = false;
+			}else{
+				$Image = false;
+			}
+		}else{
+			$Image = false;
+		}
+
+		$properties = array_merge($properties, array(
+			'MaxFileSize' => $this->getValidator()->getAllowedMaxFileSize(),
+			'Image' => $Image
+		));
+
+		return parent::Field($properties);
 	}
 }

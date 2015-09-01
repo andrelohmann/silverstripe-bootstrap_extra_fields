@@ -22,11 +22,11 @@ class BootstrapGeoLocationField extends GeoLocationField {
 		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
 		Requirements::javascript('geoform/javascript/jquery.geocomplete.js');
                 
-                if(GoogleMaps::getApiKey()) Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang().'&key='.GoogleMaps::getApiKey());  // don't use Sensor on this Field
-                else  Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang());
-                
-                $name = $this->getName();
-                $this->fieldAddress->setPlaceholder(_t('GeoLocationField.ADDRESSPLACEHOLDER', 'Address'));
+		if(GoogleMaps::getApiKey()) Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang().'&key='.GoogleMaps::getApiKey());  // don't use Sensor on this Field
+		else  Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang());
+
+		$name = $this->getName();
+		$this->fieldAddress->setPlaceholder(_t('GeoLocationField.ADDRESSPLACEHOLDER', 'Address'));
 		
 		// set caption if required
 		$js = <<<JS
@@ -39,22 +39,22 @@ class BootstrapGeoLocationField extends GeoLocationField {
     });
 })(jQuery);
 JS;
-                Requirements::customScript($js, 'BootstrapGeoLocationField_Js_'.$this->ID());
-        
-                $css = <<<CSS
+		Requirements::customScript($js, 'BootstrapGeoLocationField_Js_'.$this->ID());
+
+		$css = <<<CSS
 /* make the location suggest dropdown appear above dialog */
 .pac-container {
     z-index: 2000 !important;
 }
 CSS;
-                Requirements::customCSS($css, 'BootstrapGeoLocationField_Css_'.$this->ID());
-                
-                return $this->fieldLatitude->Field().
-                             $this->fieldLongditude->Field().
-                             '<div class="row">'.
-                             '<div class="col-sm-12">'.
-                             $this->fieldAddress->Field().
-                             '</div>'.
-                             '</div>';
+		Requirements::customCSS($css, 'BootstrapGeoLocationField_Css_'.$this->ID());
+
+		return $this->fieldLatitude->Field().
+				$this->fieldLongditude->Field().
+				'<div class="row">'.
+				'<div class="col-sm-12">'.
+				$this->fieldAddress->Field().
+				'</div>'.
+				'</div>';
 	}
 }

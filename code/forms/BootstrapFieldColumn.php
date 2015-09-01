@@ -24,11 +24,12 @@
  */
 class BootstrapFieldColumn extends FieldGroup {
     
-        protected $column_width;
+    protected $column_width;
 	
 	public function __construct($arg1 = null, $arg2 = null, $arg3 = null) {
-                if(!is_numeric($arg1) || $arg1 < 1 || 12 < $arg1) throw new Exception(sprintf('Invalid Column with on BootstrapFieldColumn: %s', $arg1));
-                else $this->column_width = (int)$arg1;
+                
+		if(!is_numeric($arg1) || $arg1 < 1 || 12 < $arg1) throw new Exception(sprintf('Invalid Column with on BootstrapFieldColumn: %s', $arg1));
+        else $this->column_width = (int)$arg1;
                     
 		if(is_array($arg2) || is_a($arg2, 'FieldSet')) {
 			$fields = $arg2;
@@ -39,20 +40,20 @@ class BootstrapFieldColumn extends FieldGroup {
 		
 		} else {
 			$fields = func_get_args();
-                        reset($fields);
-                        $this->column_width = (int)array_shift($fields);
+            reset($fields);
+            $this->column_width = (int)array_shift($fields);
 			if(!is_object(reset($fields))) $this->title = array_shift($fields);
 		}
 			
 		parent::__construct($fields);
 	}
         
-        public function setColumnWidth($width){
-            $this->column_width = (int)$width;
-        }
-        
-        public function getColumnWidth(){
-            return $this->column_width;
-        }
+	public function setColumnWidth($width){
+		$this->column_width = (int)$width;
+	}
+
+	public function getColumnWidth(){
+		return $this->column_width;
+	}
     
 }

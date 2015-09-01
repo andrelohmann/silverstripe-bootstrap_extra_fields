@@ -3,3 +3,19 @@ name: bootstrap-extra-fields
 Controller:
   extensions:
     - BootstrapExtraFieldsControllerExtension
+
+FormField:
+  extensions:
+    - BootstrapFormFieldExtension
+
+Form:
+  extensions:
+    - BootstrapFormExtension
+
+Decimal:
+  extensions:
+    - ExtendedDecimal
+
+SS_Datetime:
+  extensions:
+    - ExtendedDatetime

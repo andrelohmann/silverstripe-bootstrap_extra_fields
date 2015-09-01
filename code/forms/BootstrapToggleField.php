@@ -26,25 +26,25 @@ class BootstrapToggleField extends CheckboxField {
 		parent::__construct($name, $title, $value);
 	}
         
-        /**
-         * Add Fields to the Toogle Field
-         * 
-         * $fieldlist = new FieldList(
-			new PasswordField(
-				"{$name}[_Password]", 
-				(isset($title)) ? $title : _t('Member.PASSWORD', 'Password')
-			),
-			new PasswordField(
-				"{$name}[_ConfirmPassword]",
-				(isset($titleConfirmField)) ? $titleConfirmField : _t('Member.CONFIRMPASSWORD', 'Confirm Password')
-			)
-		);
-         */
-        public function setFieldList(FieldList $fieldlist){
-            
-            $this->children = $fieldlist;
-            
-        }
+	/**
+	 * Add Fields to the Toogle Field
+	 * 
+	 * $fieldlist = new FieldList(
+		new PasswordField(
+			"{$name}[_Password]", 
+			(isset($title)) ? $title : _t('Member.PASSWORD', 'Password')
+		),
+		new PasswordField(
+			"{$name}[_ConfirmPassword]",
+			(isset($titleConfirmField)) ? $titleConfirmField : _t('Member.CONFIRMPASSWORD', 'Confirm Password')
+		)
+	);
+	 */
+	public function setFieldList(FieldList $fieldlist){
+
+		$this->children = $fieldlist;
+
+	}
 
 	/**
 	 * Returns all the sub-fields, suitable for <% loop FieldList %>
@@ -173,7 +173,7 @@ class BootstrapToggleField extends CheckboxField {
 	 * @return CompositeField
 	 */
 	public function performReadonlyTransformation() {
-                parent::performReadonlyTransformation();
+        parent::performReadonlyTransformation();
                 
 		$newChildren = new FieldList();
 		$clone = clone $this;
@@ -197,7 +197,7 @@ class BootstrapToggleField extends CheckboxField {
 	 * @return CompositeField
 	 */
 	public function performDisabledTransformation() {
-                parent::performDisabledTransformation();
+        parent::performDisabledTransformation();
                 
 		$newChildren = new FieldList();
 		$clone = clone $this;
@@ -268,13 +268,13 @@ class BootstrapToggleField extends CheckboxField {
 	
 	public function Fields() {
         
-                Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
+        Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
 		Requirements::javascript('bootstrap_extra_fields/javascript/BootstrapToggleField.js');
 		//Requirements::css(FRAMEWORK_DIR . '/css/ConfirmedPasswordField.css');
 		
 		$Fields = new FieldList();
                 
-                foreach($this->children as $field) {
+        foreach($this->children as $field) {
 			$field->setDisabled($this->isDisabled()); 
 			$field->setReadonly($this->isReadonly());
 			if(count($this->attributes)) {
@@ -289,7 +289,7 @@ class BootstrapToggleField extends CheckboxField {
 	}
 
 	public function validate($validator) {
-                $valid = parent::validate($validator);
+        $valid = parent::validate($validator);
 		foreach($this->children as $idx => $child){
 			$valid = ($child && $child->validate($validator) && $valid);
 		}

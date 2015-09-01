@@ -31,16 +31,16 @@ class BootstrapLocationField extends LocationField {
 	
 	public function Field($properties = array()) {
 		$name = $this->getName();
-                $this->fieldLatitude->setPlaceholder(_t('GeoForm.FIELDLABELLATITUDE', 'Latitude'));
-                $this->fieldLongditude->setPlaceholder(_t('GeoForm.FIELDLABELLONGDITUDE', 'Longditude'));
-                
-                return '<div class="row">'.
-                             '<div class="col-sm-6">'.
-                             $this->fieldLatitude->Field().
-                             '</div>'.
-                             '<div class="col-sm-6">'.
-                             $this->fieldLongditude->Field().
-                             '</div>'.
-                             '</div>';
+		$this->fieldLatitude->setPlaceholder(_t('GeoForm.FIELDLABELLATITUDE', 'Latitude'));
+		$this->fieldLongditude->setPlaceholder(_t('GeoForm.FIELDLABELLONGDITUDE', 'Longditude'));
+
+		return '<div class="row">'.
+				'<div class="col-sm-6">'.
+				$this->fieldLatitude->Field().
+				'</div>'.
+				'<div class="col-sm-6">'.
+				$this->fieldLongditude->Field().
+				'</div>'.
+				'</div>';
 	}
 }

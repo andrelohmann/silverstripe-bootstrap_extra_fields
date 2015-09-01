@@ -21,12 +21,12 @@ class BootstrapConfirmedPasswordField extends ConfirmedPasswordField {
 		
 		parent::__construct($name, $title, $value, $form, $showOnClick, $titleConfirmField);
 		$this->setValue($value);
-                $this->setTitle($title);
+        $this->setTitle($title);
 	}
 	
 	public function Field($properties = array()) {
         
-                Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
+        Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
 		Requirements::javascript('bootstrap_extra_fields/javascript/BootstrapConfirmedPasswordField.js');
 		Requirements::css(FRAMEWORK_DIR . '/css/ConfirmedPasswordField.css');
 		
@@ -57,7 +57,7 @@ class BootstrapConfirmedPasswordField extends ConfirmedPasswordField {
 					$field->setAttribute($name, $value);
 				}
 			}
-                        $field->addExtraClass($this->extraClass());
+            $field->addExtraClass($this->extraClass());
 			$content .= $field->FieldHolder();
 		}
 
@@ -71,13 +71,13 @@ class BootstrapConfirmedPasswordField extends ConfirmedPasswordField {
 	
 	public function Fields() {
         
-                Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
+        Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
 		Requirements::javascript('bootstrap_extra_fields/javascript/BootstrapConfirmedPasswordField.js');
 		Requirements::css(FRAMEWORK_DIR . '/css/ConfirmedPasswordField.css');
 		
 		$Fields = new FieldList();
                 
-                foreach($this->children as $field) {
+        foreach($this->children as $field) {
 			$field->setDisabled($this->isDisabled()); 
 			$field->setReadonly($this->isReadonly());
 			if(count($this->attributes)) {
@@ -85,26 +85,26 @@ class BootstrapConfirmedPasswordField extends ConfirmedPasswordField {
 					$field->setAttribute($name, $value);
 				}
 			}
-                        $field->addExtraClass($this->extraClass());
+            $field->addExtraClass($this->extraClass());
 			$Fields->add($field);
 		}
 		
 		return $Fields;
 	}
         
-        public function getShowTitle(){
-            if($this->showOnClickTitle){
-                $title = $this->showOnClickTitle;
-            }else{
-                $title = _t(
-                        'ConfirmedPasswordField.SHOWONCLICKTITLE', 
-			'Change Password', 
-			'Label of the link which triggers display of the "change password" formfields'
-		);
-            }
-            
-            return $title;
-        }
+	public function getShowTitle(){
+		if($this->showOnClickTitle){
+			$title = $this->showOnClickTitle;
+		}else{
+			$title = _t(
+					'ConfirmedPasswordField.SHOWONCLICKTITLE', 
+		'Change Password', 
+		'Label of the link which triggers display of the "change password" formfields'
+	);
+		}
+
+		return $title;
+	}
 	
 	public function setShowOnClick($show) {
 		$this->showOnClick = (bool)$show;

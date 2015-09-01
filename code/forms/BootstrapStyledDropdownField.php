@@ -92,7 +92,7 @@ class BootstrapStyledDropdownField extends DropdownField {
 
 		$properties = array_merge($properties, array('Options' => new ArrayList($options)));
                 
-                $obj = ($properties) ? $this->customise($properties) : $this;
+        $obj = ($properties) ? $this->customise($properties) : $this;
 		$this->extend('onBeforeRender', $this);
 		return $obj->renderWith($this->getTemplates());
 	}

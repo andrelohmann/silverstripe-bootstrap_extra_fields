@@ -41,16 +41,16 @@ class BootstrapModalFormAction extends FormAction {
 		
 		parent::__construct($this->action, $title, null, null);
                 
-                if($title != null) $this->setButtonContent($title);
+        if($title != null) $this->setButtonContent($title);
 	}
 
 	public function setTarget($target) {
 		$this->target = $target;
-                return $this;
+        return $this;
 	}
         
-        public function getTarget(){
-            return $this->target;
-        }
+	public function getTarget(){
+		return $this->target;
+	}
 
 }

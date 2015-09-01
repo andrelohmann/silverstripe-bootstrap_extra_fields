@@ -133,35 +133,34 @@ JS;
 			$this->getTemplate(),
 			'Form'
 		));
+        
+		$return = $view->dontRewriteHashlinks()->process($this);
                 
-                $return = $view->dontRewriteHashlinks()->process($this);
-                
-                // Now that we're rendered, clear message
+        // Now that we're rendered, clear message
 		$this->clearMessage();
 
 		return $return;
 	}
         
-        public function AjaxReturn($request){
-            if(!Director::is_ajax()){
-                return $this;
-            }else{
-                if($this->examineFormAction($request)) return $this;
-                else return $this->forAjaxTemplate();
-            }
-            
+    public function AjaxReturn($request){
+        if(!Director::is_ajax()){
+            return $this;
+        }else{
+            if($this->examineFormAction($request)) return $this;
+            else return $this->forAjaxTemplate();
         }
+    }
         
-        protected function examineFormAction($request){
-            // Determine the action button clicked
-            $actionSet = false;
-            foreach($request->requestVars() as $paramName => $paramVal){
-                if(substr($paramName,0,7) == 'action_'){
-                    $actionSet = true;
-                    break;
-		}
-            }
-            return $actionSet;
+    protected function examineFormAction($request){
+        // Determine the action button clicked
+        $actionSet = false;
+        foreach($request->requestVars() as $paramName => $paramVal){
+            if(substr($paramName,0,7) == 'action_'){
+                $actionSet = true;
+                break;
+			}
         }
+        return $actionSet;
+    }
     
 }

@@ -31,19 +31,19 @@ class BootstrapDatetimepickerField extends TextField {
 	
 	public function Field($properties = array()) {
         
-                Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
+        Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
 		Requirements::javascript('bootstrap_extra_fields/javascript/moment.min.js');
 		Requirements::javascript('bootstrap_extra_fields/javascript/bootstrap-datetimepicker.min.js');
 		Requirements::css('bootstrap_extra_fields/css/bootstrap-datetimepicker.min.css');
                 
-                $language = '';
-                if(array_key_exists(i18n::get_locale(), $this->supported_locales)){
-                    Requirements::javascript('bootstrap_extra_fields/javascript/locales/bootstrap-datetimepicker.'.$this->supported_locales[i18n::get_locale()].'.js');
-                    $language = "language: '{$this->supported_locales[i18n::get_locale()]}'";
-                }else if($this->locale){
-                    Requirements::javascript('bootstrap_extra_fields/javascript/locales/bootstrap-datetimepicker.'.$this->locale.'.js');
-                    $language = "language: '{$this->locale}'";
-                }
+        $language = '';
+        if(array_key_exists(i18n::get_locale(), $this->supported_locales)){
+            Requirements::javascript('bootstrap_extra_fields/javascript/locales/bootstrap-datetimepicker.'.$this->supported_locales[i18n::get_locale()].'.js');
+            $language = "language: '{$this->supported_locales[i18n::get_locale()]}'";
+        }else if($this->locale){
+            Requirements::javascript('bootstrap_extra_fields/javascript/locales/bootstrap-datetimepicker.'.$this->locale.'.js');
+            $language = "language: '{$this->locale}'";
+        }
 		
 		$name = $this->ID();
 		
@@ -55,7 +55,7 @@ $(function () {
 JS;
 		Requirements::customScript($js, 'BootstrapDatetimepickerForm_Js_'.$this->ID());
                 
-                return parent::Field($properties);
+        return parent::Field($properties);
 	}
         
         public function setLocale($locale){

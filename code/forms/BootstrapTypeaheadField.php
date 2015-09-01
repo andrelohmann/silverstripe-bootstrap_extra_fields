@@ -29,8 +29,8 @@ class BootstrapTypeaheadField extends TextField {
 			die('Source on BootstrapTypeaheadField needs to be an executable method');
 		}
                 
-                $this->source = $source;
-                return $this;
+		$this->source = $source;
+		return $this;
 	}
 
 	public function Field($properties = array()) {

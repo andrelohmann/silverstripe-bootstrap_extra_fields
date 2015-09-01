@@ -7,9 +7,9 @@
  */
 
 class BootstrapFieldRow extends FieldGroup {
-    
-        public function __construct($arg1 = null, $arg2 = null) {
-                if(is_array($arg1) || is_a($arg1, 'FieldSet')) {
+       
+	public function __construct($arg1 = null, $arg2 = null) {
+        if(is_array($arg1) || is_a($arg1, 'FieldSet')) {
 			$fields = $arg1;
 		
 		} else if(is_array($arg2) || is_a($arg2, 'FieldList')) {

@@ -38,7 +38,7 @@ class RequiredUniqueFields extends RequiredFields {
 	public function __construct($required = array(), $unique = array(), $objectClass = null) {
 		$this->unique = $unique;
                 
-                $this->objectClass = $objectClass;
+        $this->objectClass = $objectClass;
 
 		parent::__construct($required);
 	}
@@ -57,26 +57,27 @@ class RequiredUniqueFields extends RequiredFields {
 		$fields = $this->form->Fields();
 
 		if($this->unique){
-                    foreach($this->unique as $fieldName=>$Message){
-                        if(!$fieldName){
-                            continue;
-			}
+			foreach($this->unique as $fieldName=>$Message){
+				if(!$fieldName){
+					continue;
+				}
 
-                        if($fieldName instanceof FormField){
-                            $formField = $fieldName;
-                            $fieldName = $fieldName->getName();
-			}else{
-                            $formField = $fields->dataFieldByName($fieldName);
-			}
-                        if($o = DataObject::get_one($this->objectClass, $fieldName."='".Convert::raw2sql($data[$fieldName])."'")){
-                            $this->validationError(
-                                $fieldName,
-				$Message
-                            );
+				if($fieldName instanceof FormField){
+					$formField = $fieldName;
+					$fieldName = $fieldName->getName();
+				}else{
+					$formField = $fields->dataFieldByName($fieldName);
+				}
+                       
+				if($o = DataObject::get_one($this->objectClass, $fieldName."='".Convert::raw2sql($data[$fieldName])."'")){
+                    $this->validationError(
+                        $fieldName,
+						$Message
+                    );
                             
-                            $valid = false;
-                        }
-                    }
+                    $valid = false;
+                }
+            }
 		}
 
 		return $valid;

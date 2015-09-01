@@ -25,10 +25,10 @@ class BootstrapButtonOptionsetField extends OptionsetField {
 	 */
 	protected $optionClasses = array();
         
-        /**
-         * @var string $buttonClass class for the buttons (default/info/primary/success/warning/danger)
-         */
-        protected $buttonClass = 'default';
+    /**
+     * @var string $buttonClass class for the buttons (default/info/primary/success/warning/danger)
+     */
+    protected $buttonClass = 'default';
 	
 	/**
 	 * Set the specific classes for single items
@@ -54,25 +54,25 @@ class BootstrapButtonOptionsetField extends OptionsetField {
 	 */
 	public function setButtonClass($class = 'default'){
 		switch($class){
-                    case 'info':
-                        $this->buttonClass = 'info';
-                    break;
-                    case 'primary':
-                        $this->buttonClass = 'primary';
-                    break;
-                    case 'success':
-                        $this->buttonClass = 'success';
-                    break;
-                    case 'warning':
-                        $this->buttonClass = 'warning';
-                    break;
-                    case 'danger':
-                        $this->buttonClass = 'danger';
-                    break;
-                    default:
-                        $this->buttonClass = 'default';
-                    break;
-                }
+            case 'info':
+                $this->buttonClass = 'info';
+            break;
+            case 'primary':
+                $this->buttonClass = 'primary';
+            break;
+            case 'success':
+                $this->buttonClass = 'success';
+            break;
+            case 'warning':
+                $this->buttonClass = 'warning';
+            break;
+            case 'danger':
+                $this->buttonClass = 'danger';
+            break;
+            default:
+                $this->buttonClass = 'default';
+            break;
+        }
 		return $this;
 	}
 	

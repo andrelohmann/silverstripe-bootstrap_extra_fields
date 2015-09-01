@@ -23,10 +23,10 @@ class BootstrapButtonCheckboxSetField extends CheckboxSetField {
 	 */
 	protected $optionClasses = array();
         
-        /**
-         * @var string $buttonClass class for the buttons (default/info/primary/success/warning/danger)
-         */
-        protected $buttonClass = 'default';
+    /**
+     * @var string $buttonClass class for the buttons (default/info/primary/success/warning/danger)
+     */
+    protected $buttonClass = 'default';
 	
 	/**
 	 * Set the specific classes for single items
@@ -52,25 +52,25 @@ class BootstrapButtonCheckboxSetField extends CheckboxSetField {
 	 */
 	public function setButtonClass($class = 'default'){
 		switch($class){
-                    case 'info':
-                        $this->buttonClass = 'info';
-                    break;
-                    case 'primary':
-                        $this->buttonClass = 'primary';
-                    break;
-                    case 'success':
-                        $this->buttonClass = 'success';
-                    break;
-                    case 'warning':
-                        $this->buttonClass = 'warning';
-                    break;
-                    case 'danger':
-                        $this->buttonClass = 'danger';
-                    break;
-                    default:
-                        $this->buttonClass = 'default';
-                    break;
-                }
+            case 'info':
+                $this->buttonClass = 'info';
+            break;
+            case 'primary':
+                $this->buttonClass = 'primary';
+            break;
+            case 'success':
+                $this->buttonClass = 'success';
+            break;
+            case 'warning':
+                $this->buttonClass = 'warning';
+            break;
+            case 'danger':
+                $this->buttonClass = 'danger';
+            break;
+            default:
+                $this->buttonClass = 'default';
+            break;
+        }
 		return $this;
 	}
 	
@@ -173,8 +173,8 @@ class BootstrapButtonCheckboxSetField extends CheckboxSetField {
 				
 			$class = false;
 			if(array_key_exists($value, $this->optionClasses)){
-                            $class = $this->optionClasses[$value];
-                        }
+                $class = $this->optionClasses[$value];
+            }
 
 			$options[] = new ArrayData(array(
 				'ID' => $itemID,
