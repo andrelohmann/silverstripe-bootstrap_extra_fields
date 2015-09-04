@@ -43,8 +43,8 @@ class BootstrapPostCodeLocationField extends PostCodeLocationField {
 		$js = <<<JS
 jQuery(document).ready(function() {
     // bind PostCodeLocationChanged to Postcode and Country Fields
-    jQuery('#{$name}-Postcode').keyup({$name}PostCodeLocationChanged);
-    jQuery('#{$name}-Country').keyup({$name}PostCodeLocationChanged);
+    jQuery('#{$name}_Postcode').keyup({$name}PostCodeLocationChanged);
+    jQuery('#{$name}_Country').keyup({$name}PostCodeLocationChanged);
 });
 
 var {$name}PostcodeTypeTimer = null;
@@ -57,9 +57,9 @@ function {$name}PostCodeLocationChanged(){
     }
                         
     // trim Postcode value
-    var postcode = jQuery('#{$name}-Postcode').val().replace(/\s+$/,"").replace(/^\s+/,"");
+    var postcode = jQuery('#{$name}_Postcode').val().replace(/\s+$/,"").replace(/^\s+/,"");
     // trim Country value
-    var country = jQuery('#{$name}-Country').val().replace(/\s+$/,"").replace(/^\s+/,"");
+    var country = jQuery('#{$name}_Country').val().replace(/\s+$/,"").replace(/^\s+/,"");
     
     // Postcode or Country at least more than 2 digits and not placeholster is stristr of value
     if(postcode.length >= 2 || country.length >= 2){
@@ -72,13 +72,13 @@ var {$name}PostcodeGeocoder = null;
 // fetch google data and update lat, lng
 function {$name}PostCodeLocationFetch(){
     // clear Lat + Lng
-    jQuery('#{$name}-Latitude').val('');
-    jQuery('#{$name}-Longditude').val('');
+    jQuery('#{$name}_Latitude').val('');
+    jQuery('#{$name}_Longditude').val('');
     
     // trim Postcode value
-    var postcode = jQuery('#{$name}-Postcode').val().replace(/\s+$/,"").replace(/^\s+/,"");
+    var postcode = jQuery('#{$name}_Postcode').val().replace(/\s+$/,"").replace(/^\s+/,"");
     // trim Country value
-    var country = jQuery('#{$name}-Country').val().replace(/\s+$/,"").replace(/^\s+/,"");
+    var country = jQuery('#{$name}_Country').val().replace(/\s+$/,"").replace(/^\s+/,"");
     
     // create request
     var Request = {
@@ -94,15 +94,15 @@ function {$name}PostcodeGeocoderCallback(Response, Status){
     // Status OK
     if(Status == 'OK'){
         if(Response.length == 1){
-            jQuery('#{$name}-Latitude').val(Response[0]['geometry']['location'].lat());
-            jQuery('#{$name}-Longditude').val(Response[0]['geometry']['location'].lng());
-            //alert($('#{$name}-Latitude').val()+','+$('#{$name}-Longditude').val());
+            jQuery('#{$name}_Latitude').val(Response[0]['geometry']['location'].lat());
+            jQuery('#{$name}_Longditude').val(Response[0]['geometry']['location'].lng());
+            //alert($('#{$name}_Latitude').val()+','+$('#{$name}_Longditude').val());
         }else{
             // check if there is only one locality, while all others are places of interest
             var id = PostcodeIsSingleLocality(Response);
             if(id != null){
-                jQuery('#{$name}-Latitude').val(Response[id]['geometry']['location'].lat());
-                jQuery('#{$name}-Longditude').val(Response[id]['geometry']['location'].lng());
+                jQuery('#{$name}_Latitude').val(Response[id]['geometry']['location'].lat());
+                jQuery('#{$name}_Longditude').val(Response[id]['geometry']['location'].lng());
             }
         }
     }
