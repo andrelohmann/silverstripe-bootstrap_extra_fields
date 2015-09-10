@@ -10,3 +10,5 @@ en:
   BootstrapCaptchaField:
     VALIDATION: 'Invalid code, try again.'
     PLACEHOLDER: 'Type the code shown'
+  BootstrapSemVerField:
+    VALIDATION: 'Invalid version number.'
