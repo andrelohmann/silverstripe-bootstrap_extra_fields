@@ -4,6 +4,12 @@
 	"description": "Silverstripe extra Fieldtypes for Bootstrap",
 	"license": "BSD-3-Clause",
 	"keywords": ["silverstripe", "framework"],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/andrelohmann/SemVer"
+        }
+	],
 	"authors": [
 		{
 			"name": "Andre Lohmann",
@@ -12,7 +18,8 @@
 	],
 	"require": {
 		"php": ">=5.3.2",
-		"composer/installers": "*"
+		"composer/installers": "*",
+		"andrelohmann/semver": "1.1.0"
 	},
 	"minimum-stability": "stable"
 }
