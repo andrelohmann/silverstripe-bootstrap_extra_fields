@@ -13,7 +13,9 @@
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": "*",
-		"andrelohmann/semver": "1.1.*"
+		"andrelohmann/semver": "1.1.*",
+		"andrelohmann-silverstripe/geoform": "2.*",
+		"andrelohmann-silverstripe/legacyfields": "2.*"
 	},
 	"minimum-stability": "stable"
 }
