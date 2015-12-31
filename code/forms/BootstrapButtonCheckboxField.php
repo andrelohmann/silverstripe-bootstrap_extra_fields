@@ -18,20 +18,22 @@
  * @package bootstrap_extra_fields
  * @subpackage forms
  */
-class BootstrapButtonCheckboxField extends CheckboxField {
+class BootstrapButtonCheckboxField extends CheckboxField
+{
     
     
 
-	/**
-	 * Creates a new field.
-	 *
-	 * @param string $name The internal field name, passed to forms.
-	 * @param string $title The human-readable field label.
-	 * @param mixed $value The value of the field.
-	 */
-	public function __construct($name, $title = null, $value = null) {
-            parent::__construct($name, $title, $value);
+    /**
+     * Creates a new field.
+     *
+     * @param string $name The internal field name, passed to forms.
+     * @param string $title The human-readable field label.
+     * @param mixed $value The value of the field.
+     */
+    public function __construct($name, $title = null, $value = null)
+    {
+        parent::__construct($name, $title, $value);
             
-            $this->setFieldHolderTemplate('FormField_holder');
-	}
+        $this->setFieldHolderTemplate('FormField_holder');
+    }
 }

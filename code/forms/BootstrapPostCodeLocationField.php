@@ -5,42 +5,48 @@
  * @package geoform
  * @subpackage fields-formattedinput
  */
-class BootstrapPostCodeLocationField extends PostCodeLocationField {
-	
-	/**
-	 * @param string $name - Name of field
-	 * @return FormField
-	 */
-	protected function FieldPostcode($name) {
-		
-		$field = new TextField("{$name}[Postcode]");
-		
-		return $field;
-	}
-	
-	/**
-	 * @param string $name - Name of field
-	 * @return FormField
-	 */
-	protected function FieldCountry($name) {
-		
-		$field = new TextField("{$name}[Country]");
-		
-		return $field;
-	}
-	
-	public function Field($properties = array()) {
-		Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
+class BootstrapPostCodeLocationField extends PostCodeLocationField
+{
+    
+    /**
+     * @param string $name - Name of field
+     * @return FormField
+     */
+    protected function FieldPostcode($name)
+    {
+        $field = new TextField("{$name}[Postcode]");
+        
+        return $field;
+    }
+    
+    /**
+     * @param string $name - Name of field
+     * @return FormField
+     */
+    protected function FieldCountry($name)
+    {
+        $field = new TextField("{$name}[Country]");
+        
+        return $field;
+    }
+    
+    public function Field($properties = array())
+    {
+        Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
                 
-		if(GoogleMaps::getApiKey()) Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang().'&key='.GoogleMaps::getApiKey());  // don't use Sensor on this Field
-		else  Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang());
+        if (GoogleMaps::getApiKey()) {
+            Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang().'&key='.GoogleMaps::getApiKey());
+        }  // don't use Sensor on this Field
+        else {
+            Requirements::javascript('//maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language='.i18n::get_tinymce_lang());
+        }
 
-		$name = $this->getName();
-		$this->fieldPostcode->setPlaceholder(_t('PostCodeLocationField.ZIPCODEPLACEHOLDER', 'ZIP/Postcode'));
-		$this->fieldCountry->setPlaceholder(_t('PostCodeLocationField.CITYCOUNTRYPLACEHOLDER', 'City/Country'));
-		
-		// set caption if required
-		$js = <<<JS
+        $name = $this->getName();
+        $this->fieldPostcode->setPlaceholder(_t('PostCodeLocationField.ZIPCODEPLACEHOLDER', 'ZIP/Postcode'));
+        $this->fieldCountry->setPlaceholder(_t('PostCodeLocationField.CITYCOUNTRYPLACEHOLDER', 'City/Country'));
+        
+        // set caption if required
+        $js = <<<JS
 jQuery(document).ready(function() {
     // bind PostCodeLocationChanged to Postcode and Country Fields
     jQuery('#{$name}_Postcode').keyup({$name}PostCodeLocationChanged);
@@ -123,17 +129,17 @@ function PostcodeIsSingleLocality(Response){
     return (counter == 1) ? locality : null;
 }
 JS;
-		Requirements::customScript($js, 'BootstrapPostCodeLocationField_Css_'.$this->ID());
+        Requirements::customScript($js, 'BootstrapPostCodeLocationField_Css_'.$this->ID());
                 
-		return $this->fieldLatitude->Field().
-				$this->fieldLongditude->Field().
-				'<div class="row">'.
-				'<div class="col-sm-6">'.
-				$this->fieldPostcode->Field().
-				'</div>'.
-				'<div class="col-sm-6">'.
-				$this->fieldCountry->Field().
-				'</div>'.
-				'</div>';
-	}
+        return $this->fieldLatitude->Field().
+                $this->fieldLongditude->Field().
+                '<div class="row">'.
+                '<div class="col-sm-6">'.
+                $this->fieldPostcode->Field().
+                '</div>'.
+                '<div class="col-sm-6">'.
+                $this->fieldCountry->Field().
+                '</div>'.
+                '</div>';
+    }
 }

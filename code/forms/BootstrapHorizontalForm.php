@@ -25,14 +25,16 @@
  * @package forms
  * @subpackage fields-structural
  */
-class BootstrapHorizontalForm extends Form {
+class BootstrapHorizontalForm extends Form
+{
     
-    public function IsHorizontal(){
+    public function IsHorizontal()
+    {
         return true;
     }
     
-    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null){
-         
+    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null)
+    {
         parent::__construct(
                 $controller,
                 $name,
@@ -46,5 +48,4 @@ class BootstrapHorizontalForm extends Form {
         
         $this->setTemplate('BootstrapHorizontalForm')->addExtraClass('form-horizontal');
     }
-    
 }

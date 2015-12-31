@@ -19,14 +19,16 @@
  * @package bootstrap_extra_fields
  * @subpackage forms
  */
-class BootstrapHorizontalModalForm extends BootstrapModalForm {
+class BootstrapHorizontalModalForm extends BootstrapModalForm
+{
     
-    public function IsHorizontal(){
+    public function IsHorizontal()
+    {
         return true;
     }
     
-    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction){
-         
+    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction)
+    {
         parent::__construct(
                 $controller,
                 $name,
@@ -42,5 +44,4 @@ class BootstrapHorizontalModalForm extends BootstrapModalForm {
         
         $this->setTemplate('BootstrapHorizontalModalForm')->addExtraClass('form-horizontal')->setLarge();
     }
-    
 }

@@ -15,42 +15,47 @@
  * @package forms
  * @subpackage actions
  */
-class BootstrapModalFormAction extends FormAction {
+class BootstrapModalFormAction extends FormAction
+{
 
-	protected $target;
-	
-	/**
-	 * Enables the use of <button> instead of <input>
-	 * in {@link Field()} - for more customizeable styling.
-	 * 
-	 * @var boolean $useButtonTag
-	 */
-	public $useButtonTag = false;
-	
-	protected $buttonContent = null;
-	
-	/**
-	 * Create a new action button.
-	 *
-	 * @param action The method to call when the button is clicked
-	 * @param title The label on the button
-	 * @param form The parent form, auto-set when the field is placed inside a form 
-	 */
-	public function __construct($title = null) {
-		$this->action = "action_modalToggle";
-		
-		parent::__construct($this->action, $title, null, null);
-                
-        if($title != null) $this->setButtonContent($title);
-	}
-
-	public function setTarget($target) {
-		$this->target = $target;
-        return $this;
-	}
+    protected $target;
+    
+    /**
+     * Enables the use of <button> instead of <input>
+     * in {@link Field()} - for more customizeable styling.
+     * 
+     * @var boolean $useButtonTag
+     */
+    public $useButtonTag = false;
+    
+    protected $buttonContent = null;
+    
+    /**
+     * Create a new action button.
+     *
+     * @param action The method to call when the button is clicked
+     * @param title The label on the button
+     * @param form The parent form, auto-set when the field is placed inside a form 
+     */
+    public function __construct($title = null)
+    {
+        $this->action = "action_modalToggle";
         
-	public function getTarget(){
-		return $this->target;
-	}
+        parent::__construct($this->action, $title, null, null);
+                
+        if ($title != null) {
+            $this->setButtonContent($title);
+        }
+    }
 
+    public function setTarget($target)
+    {
+        $this->target = $target;
+        return $this;
+    }
+        
+    public function getTarget()
+    {
+        return $this->target;
+    }
 }
