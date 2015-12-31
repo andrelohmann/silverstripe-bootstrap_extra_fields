@@ -65,14 +65,16 @@
  * @package bootstrap_extra_fields
  * @subpackage forms
  */
-class BootstrapHorizontalAjaxForm extends BootstrapAjaxForm {
+class BootstrapHorizontalAjaxForm extends BootstrapAjaxForm
+{
     
-    public function IsHorizontal(){
+    public function IsHorizontal()
+    {
         return true;
     }
     
-    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null){
-         
+    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null)
+    {
         parent::__construct(
                 $controller,
                 $name,
@@ -81,11 +83,11 @@ class BootstrapHorizontalAjaxForm extends BootstrapAjaxForm {
                 $validator
         );
         
-        if(!Director::is_ajax()){
+        if (!Director::is_ajax()) {
             Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
             Requirements::javascript('bootstrap_extra_fields/javascript/tooltip.js');
             $this->setTemplate('BootstrapHorizontalAjaxForm')->addExtraClass('form-horizontal');
-        }else{
+        } else {
             $this->setTemplate('BootstrapHorizontalForm')->addExtraClass('form-horizontal');
         }
     }

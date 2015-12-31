@@ -12,13 +12,14 @@
  * @package forms
  * @subpackage validators
  */
-class RequiredUniqueFields extends RequiredFields {
+class RequiredUniqueFields extends RequiredFields
+{
 
-	protected $unique;
-	protected $objectClass;
+    protected $unique;
+    protected $objectClass;
 
-	/**
-	 * Pass required and unique fields as arrays.
+    /**
+     * Pass required and unique fields as arrays.
          * 
          * Example:
          * new RequiredUniqueFields(
@@ -34,52 +35,54 @@ class RequiredUniqueFields extends RequiredFields {
          * @param array $required
          * @param array $unique
          * @param string $objectClass
-	 */
-	public function __construct($required = array(), $unique = array(), $objectClass = null) {
-		$this->unique = $unique;
+     */
+    public function __construct($required = array(), $unique = array(), $objectClass = null)
+    {
+        $this->unique = $unique;
                 
         $this->objectClass = $objectClass;
 
-		parent::__construct($required);
-	}
+        parent::__construct($required);
+    }
 
-	/**
-	 * Allows validation of fields via specification of a php function for
-	 * validation which is executed after the form is submitted.
-	 *
-	 * @param array $data
-	 *
-	 * @return boolean
-	 */
-	public function php($data) {
-		$valid = parent::php($data);
+    /**
+     * Allows validation of fields via specification of a php function for
+     * validation which is executed after the form is submitted.
+     *
+     * @param array $data
+     *
+     * @return boolean
+     */
+    public function php($data)
+    {
+        $valid = parent::php($data);
                 
-		$fields = $this->form->Fields();
+        $fields = $this->form->Fields();
 
-		if($this->unique){
-			foreach($this->unique as $fieldName=>$Message){
-				if(!$fieldName){
-					continue;
-				}
+        if ($this->unique) {
+            foreach ($this->unique as $fieldName=>$Message) {
+                if (!$fieldName) {
+                    continue;
+                }
 
-				if($fieldName instanceof FormField){
-					$formField = $fieldName;
-					$fieldName = $fieldName->getName();
-				}else{
-					$formField = $fields->dataFieldByName($fieldName);
-				}
+                if ($fieldName instanceof FormField) {
+                    $formField = $fieldName;
+                    $fieldName = $fieldName->getName();
+                } else {
+                    $formField = $fields->dataFieldByName($fieldName);
+                }
                        
-				if($o = DataObject::get_one($this->objectClass, $fieldName."='".Convert::raw2sql($data[$fieldName])."'")){
+                if ($o = DataObject::get_one($this->objectClass, $fieldName."='".Convert::raw2sql($data[$fieldName])."'")) {
                     $this->validationError(
                         $fieldName,
-						$Message
+                        $Message
                     );
                             
                     $valid = false;
                 }
             }
-		}
+        }
 
-		return $valid;
-	}
+        return $valid;
+    }
 }

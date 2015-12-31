@@ -7,11 +7,13 @@
  * @package forms
  * @subpackage fields-formattedinput
  */
-class BootstrapConfirmFormAction extends FormAction {
+class BootstrapConfirmFormAction extends FormAction
+{
     
     protected $confirmMessage;
     
-    public function setConfirmMessage($message){        
+    public function setConfirmMessage($message)
+    {
         $this->confirmMessage = $message;
         $this->setAttribute('onclick', "javascript:return confirm('".$this->confirmMessage."');");
         return $this;

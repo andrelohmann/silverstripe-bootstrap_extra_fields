@@ -75,12 +75,13 @@
  * @package bootstrap_extra_fields
  * @subpackage forms
  */
-class BootstrapAjaxModalForm extends BootstrapModalForm {
+class BootstrapAjaxModalForm extends BootstrapModalForm
+{
     
     
     
-    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction){
-         
+    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction)
+    {
         parent::__construct(
                 $controller,
                 $name,
@@ -121,46 +122,53 @@ class BootstrapAjaxModalForm extends BootstrapModalForm {
 JS;
         Requirements::customScript($js, 'BootstrapAjaxModalForm_Js_'.$this->FormName());
         
-        if(Director::is_ajax()) $this->setTemplate('BootstrapAjaxModalForm');
+        if (Director::is_ajax()) {
+            $this->setTemplate('BootstrapAjaxModalForm');
+        }
     }
 
-	/**
-	 * Return a rendered version of this form, suitable for ajax post-back.
-	 * It triggers slightly different behaviour, such as disabling the rewriting of # links
-	 */
-	public function forAjaxTemplate() {
-		$view = new SSViewer(array(
-			$this->getTemplate(),
-			'Form'
-		));
+    /**
+     * Return a rendered version of this form, suitable for ajax post-back.
+     * It triggers slightly different behaviour, such as disabling the rewriting of # links
+     */
+    public function forAjaxTemplate()
+    {
+        $view = new SSViewer(array(
+            $this->getTemplate(),
+            'Form'
+        ));
         
-		$return = $view->dontRewriteHashlinks()->process($this);
+        $return = $view->dontRewriteHashlinks()->process($this);
                 
         // Now that we're rendered, clear message
-		$this->clearMessage();
+        $this->clearMessage();
 
-		return $return;
-	}
+        return $return;
+    }
         
-    public function AjaxReturn($request){
-        if(!Director::is_ajax()){
+    public function AjaxReturn($request)
+    {
+        if (!Director::is_ajax()) {
             return $this;
-        }else{
-            if($this->examineFormAction($request)) return $this;
-            else return $this->forAjaxTemplate();
+        } else {
+            if ($this->examineFormAction($request)) {
+                return $this;
+            } else {
+                return $this->forAjaxTemplate();
+            }
         }
     }
         
-    protected function examineFormAction($request){
+    protected function examineFormAction($request)
+    {
         // Determine the action button clicked
         $actionSet = false;
-        foreach($request->requestVars() as $paramName => $paramVal){
-            if(substr($paramName,0,7) == 'action_'){
+        foreach ($request->requestVars() as $paramName => $paramVal) {
+            if (substr($paramName, 0, 7) == 'action_') {
                 $actionSet = true;
                 break;
-			}
+            }
         }
         return $actionSet;
     }
-    
 }

@@ -5,7 +5,8 @@
  * @package framework
  * @subpackage model
  */
-class ExtendedDatetime extends DataExtension {
+class ExtendedDatetime extends DataExtension
+{
     
     protected $locale_formats = array(
         'en_US' => 'm/d/Y g:i A', //
@@ -13,9 +14,13 @@ class ExtendedDatetime extends DataExtension {
         'en_GB' => 'd/m/Y H:i'
     );
         
-    protected function getFormat(){
-        if(array_key_exists(i18n::get_locale(), $this->locale_formats)) $locale = i18n::get_locale();
-        else $locale = 'en_US';
+    protected function getFormat()
+    {
+        if (array_key_exists(i18n::get_locale(), $this->locale_formats)) {
+            $locale = i18n::get_locale();
+        } else {
+            $locale = 'en_US';
+        }
         
         return $this->locale_formats[$locale];
     }
@@ -25,9 +30,9 @@ class ExtendedDatetime extends DataExtension {
      * 
      * @return string
      */
-    public function NiceLocale(){
-        
-        if($this->owner->value){
+    public function NiceLocale()
+    {
+        if ($this->owner->value) {
             return date($this->getFormat(), strtotime($this->owner->value));
         }
     }

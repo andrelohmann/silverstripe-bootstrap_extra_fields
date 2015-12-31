@@ -5,10 +5,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class BootstrapFormExtension extends Extension {
+class BootstrapFormExtension extends Extension
+{
     
-    public function IsHorizontal(){
+    public function IsHorizontal()
+    {
         return false;
     }
 }
-

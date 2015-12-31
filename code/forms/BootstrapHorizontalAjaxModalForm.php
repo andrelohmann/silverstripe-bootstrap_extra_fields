@@ -75,14 +75,16 @@
  * @package bootstrap_extra_fields
  * @subpackage forms
  */
-class BootstrapHorizontalAjaxModalForm extends BootstrapAjaxModalForm {
+class BootstrapHorizontalAjaxModalForm extends BootstrapAjaxModalForm
+{
     
-    public function IsHorizontal(){
+    public function IsHorizontal()
+    {
         return true;
     }
     
-    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction){
-         
+    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction)
+    {
         parent::__construct(
                 $controller,
                 $name,
@@ -93,13 +95,12 @@ class BootstrapHorizontalAjaxModalForm extends BootstrapAjaxModalForm {
                 $ModalFormAction
         );
         
-        if(Director::is_ajax()){
+        if (Director::is_ajax()) {
             $this->setTemplate('BootstrapHorizontalAjaxModalForm')->addExtraClass('form-horizontal');
-        }else{
+        } else {
             Requirements::javascript(FRAMEWORK_DIR . '/thirdparty/jquery/jquery.min.js');
             Requirements::javascript('bootstrap_extra_fields/javascript/tooltip.js');
             $this->setTemplate('BootstrapHorizontalModalForm')->addExtraClass('form-horizontal')->setLarge();
         }
     }
-    
 }

@@ -19,38 +19,43 @@
  * @package bootstrap_extra_fields
  * @subpackage forms
  */
-class BootstrapModalForm extends Form {
+class BootstrapModalForm extends Form
+{
     
     protected $ModalFormAction;
     protected $title;
     
     protected $size = 'normal';
     
-    public function hasErrors(){
+    public function hasErrors()
+    {
         $errorInfo = Session::get("FormInfo.{$this->FormName()}");
         
-        if(isset($errorInfo['errors']) && is_array($errorInfo['errors'])){
+        if (isset($errorInfo['errors']) && is_array($errorInfo['errors'])) {
             return true;
         }
         
-        if(isset($errorInfo['message']) && isset($errorInfo['type'])) {
+        if (isset($errorInfo['message']) && isset($errorInfo['type'])) {
             return true;
         }
         
         return false;
     }
     
-    public function setTitle($title){
+    public function setTitle($title)
+    {
         $this->title = $title;
         return $this;
     }
     
-    public function getTitle(){
+    public function getTitle()
+    {
         return $this->title;
     }
     
-    public function setSize($size = 'normal'){
-        switch($size){
+    public function setSize($size = 'normal')
+    {
+        switch ($size) {
             case 'large':
                 $this->size = 'large';
             break;
@@ -66,23 +71,27 @@ class BootstrapModalForm extends Form {
         return $this;
     }
     
-    public function setLarge(){
+    public function setLarge()
+    {
         $this->size = 'large';
         return $this;
     }
     
-    public function setSmall(){
+    public function setSmall()
+    {
         $this->size = 'small';
         return $this;
     }
     
-    public function setNormal(){
+    public function setNormal()
+    {
         $this->size = 'normal';
         return $this;
     }
     
-    public function getSize(){
-        switch($this->size){
+    public function getSize()
+    {
+        switch ($this->size) {
             case 'large':
                 return 'modal-lg';
             break;
@@ -97,8 +106,8 @@ class BootstrapModalForm extends Form {
         }
     }
     
-    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction){
-         
+    public function __construct($controller, $name, FieldList $fields, FieldList $actions, $validator = null, $Title = '', BootstrapModalFormAction $ModalFormAction)
+    {
         parent::__construct(
                 $controller,
                 $name,
@@ -112,7 +121,7 @@ class BootstrapModalForm extends Form {
         $this->ModalFormAction = $ModalFormAction;
         $this->ModalFormAction->setTarget("Modal_".$this->FormName());
         
-        if($this->hasErrors()){
+        if ($this->hasErrors()) {
             // set Modal open
             $name = $this->FormName();
             $js = <<<JS
@@ -125,5 +134,4 @@ JS;
         
         $this->setTemplate('BootstrapModalForm');
     }
-    
 }
