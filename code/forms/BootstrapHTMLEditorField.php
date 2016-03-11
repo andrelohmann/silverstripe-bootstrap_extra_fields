@@ -17,11 +17,10 @@ class BootstrapHTMLEditorField extends TextareaField {
 $(document).ready(function() {
     $('#{$this->ID()}').summernote({
         callbacks: {
-            onChange: function(contents, $editable) {
-                $('textarea[name="{$this->getName()}"]').html($('#{$this->ID()}').code());
+            onChange: function(contents) {
+                $('##{$this->ID()}').html($('#{$this->ID()}').summernote('code'));
             }
-        },
-		height: 300
+        }
 	});
 });
 JS;
