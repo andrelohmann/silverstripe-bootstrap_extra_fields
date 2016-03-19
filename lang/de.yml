@@ -12,3 +12,5 @@ de:
     PLACEHOLDER: 'Hier den angezeigten Code eingeben'
   BootstrapSemVerField:
     VALIDATION: 'Invalide Versions Nummer.'
+  BootstrapUrlField:
+    VALIDATION: 'Invalide URL.'
