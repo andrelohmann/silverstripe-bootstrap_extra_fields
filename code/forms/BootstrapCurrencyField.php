@@ -8,6 +8,8 @@
  * @subpackage fields-formattedinput
  */
 class BootstrapCurrencyField extends NumericField {
+	
+	protected $currency_symbol = null;
     
 	/**
 	 * displays the value in its current locality format
@@ -46,6 +48,8 @@ class BootstrapCurrencyField extends NumericField {
 	}
         
 	public function CurrencySymbol(){
+		
+		if($this->currency_symbol) return $this->currency_symbol;
 
 		require_once THIRDPARTY_PATH."/Zend/Currency.php";
 
@@ -53,8 +57,14 @@ class BootstrapCurrencyField extends NumericField {
 		$symbol = new Zend_Currency($locale);
 		return $symbol->getSymbol();
 	}
+	
+	public function setCurrencySymbol($symbol = null){
+		$this->currency_symbol = $symbol;
+		return $this;
+	}
 
 	public function setEmpty(){
 		$this->value = null;
+		return $this;
 	}
 }
