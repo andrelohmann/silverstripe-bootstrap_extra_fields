@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('#{$this->ID()}').summernote({
         callbacks: {
             onChange: function(contents) {
-                $('##{$this->ID()}').html($('#{$this->ID()}').summernote('code'));
+                $('#{$this->ID()}').html($('#{$this->ID()}').summernote('code'));
             }
         }
 	});
