@@ -12,7 +12,7 @@ class BootstrapLiquidEditorField extends TextareaField {
 		// set caption if required
 		$js = <<<JS
 $(document).ready(function() {
-	var editor = ace.edit("{$this->ID()}");
+	var editor = ace.edit("{$this->ID()}-ace-editor");
 	editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/liquid");
     editor.getSession().on('change', function(e) {
