@@ -8,7 +8,7 @@
 		
 		<div class="col-sm-9">
             <% if $RightTitle %>
-				$RightTitle
+				<span class="readonly">$RightTitle</span>
 			<% end_if %>
 		</div>
     </div>
