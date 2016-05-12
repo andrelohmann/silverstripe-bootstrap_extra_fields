@@ -12,7 +12,7 @@
         
         <% if $RightTitle %>
             <div class="col-sm-1">
-                <span class="help-inline"><a href="#" data-toggle="tooltip" title="$RightTitle"><i class="glyphicon glyphicon-question-sign"></i></a></span>
+                <span class="help-inline"><a href="#" data-toggle="popover" title="$Title" data-content="$RightTitle" data-trigger="focus"><i class="glyphicon glyphicon-question-sign"></i></a></span>
             </div>
         <% end_if %>
     </div>
