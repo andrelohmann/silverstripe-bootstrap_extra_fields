@@ -109,6 +109,14 @@ class BootstrapConfirmedPasswordField extends ConfirmedPasswordField {
 	public function setShowOnClick($show) {
 		$this->showOnClick = (bool)$show;
 
+		if($this->showOnClick){
+                    if(!$this->children->fieldByName($this->getName() . '[_PasswordFieldVisible]')){
+                        $PasswordFieldVisible = new HiddenField($this->getName() . '[_PasswordFieldVisible]');
+                        $PasswordFieldVisible->setAttribute('autocomplete', 'off');
+                        $this->children->push($PasswordFieldVisible);
+                    }
+		}
+
 		return $this;
 	}
         
