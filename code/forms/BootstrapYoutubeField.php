@@ -10,7 +10,7 @@ class BootstrapYoutubeField extends TextField {
 	 * {@inheritdoc}
 	 */
 	public function Type() {
-		return 'url text';
+		return 'text';
 	}
 
 	/**
@@ -20,7 +20,7 @@ class BootstrapYoutubeField extends TextField {
 		return array_merge(
 			parent::getAttributes(),
 			array(
-				'type' => 'url',
+				'type' => 'text',
 			)
 		);
 	}
