@@ -14,3 +14,5 @@ de:
     VALIDATION: 'Invalide Versions Nummer.'
   BootstrapUrlField:
     VALIDATION: 'Invalide URL.'
+  BootstrapYoutubeField:
+    VALIDATION: 'Invalide Youtube Video ID.'
