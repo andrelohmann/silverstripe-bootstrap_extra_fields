@@ -16,6 +16,7 @@ Used in side panels and action tabs
 }
 .ss-uploadfield .form-control {
     height: auto;
+    padding: 1em 1.5em;
 }
 .ss-uploadfield-item {
     margin: 0;
@@ -24,12 +25,16 @@ Used in side panels and action tabs
 }
 .ss-uploadfield-item-preview {
     height: 75px;
-    line-height: 75px;
     width: 100px;
     text-align: center;
     font-weight: bold;
     float: left;
     overflow: hidden;
+}
+.ss-uploadfield-item-preview > span {
+    display: block;
+    font-size: 12px;
+    padding: 10px;
 }
 .ss-uploadfield-item-preview.ss-uploadfield-dropzone {
     border: 2px dashed #e2e0d6;
@@ -37,18 +42,24 @@ Used in side panels and action tabs
     background-color: #F6F5ED;
     display: none;
     margin-right: 15px;
+    -webkit-transition: border 0.3s ease-in-out 0s;
+            transition: border 0.3s ease-in-out 0s;
+}
+.ss-uploadfield-item-preview.ss-uploadfield-dropzone.hover,
+.ss-uploadfield-item-preview.ss-uploadfield-dropzone:hover {
+    border: 2px dashed #DCDAD0;
+    background-color: #Ffffff;
 }
 .ss-uploadfield-item .ss-uploadfield-item-info {
     margin-left: 115px;
 }
-.ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name {
+.ss-uploadfield-item-name {
     display: block;
-    line-height: 13px;
-    height: 26px;
+    height: 40px;
+    line-height: 20px;
     margin: 0;
-    text-align: left;
 }
-.ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .name {
+.ss-uploadfield-item-name .name {
     max-width: 240px;
     font-weight: bold;
     overflow: hidden;
@@ -58,30 +69,31 @@ Used in side panels and action tabs
     display: inline;
     float: left;
 }
-.ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .size {
+.ss-uploadfield-item-name .size {
     color: #848484;
     padding: 0 0 0 5px;
     display: inline;
     float: left;
 }
-.ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .ss-uploadfield-item-status {
+.ss-uploadfield-item-name .ss-uploadfield-item-status {
     float: right;
     padding: 0 0 0 5px;
     text-align: right;
     max-width: 75%;
 }
-.ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-error-text {
+.ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-error-text {
     color: red;
     font-weight: bold;
 }
-.ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-warning-text {
+.ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-warning-text {
     color: #b7a403;
 }
-.ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-success-text {
+.ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-success-text {
     color: #1f9433;
 }
 .ss-uploadfield .ss-ui-button {
     border-radius: 2px;
+    border: none;
     display: block;
     float: left;
     font-size: 12px;
@@ -91,6 +103,8 @@ Used in side panels and action tabs
 .ss-uploadfield .ss-ui-button.ss-uploadfield-fromcomputer {
     position: relative;
     overflow: hidden;
+    background-color: #069d88;
+    text-transform: uppercase;
 }
 .ss-uploadfield .ss-uploadfield-files {
     margin: 0;
@@ -110,7 +124,6 @@ Used in side panels and action tabs
     border-bottom: 0;
 }
 .ss-uploadfield .ss-uploadfield-files .ss-uploadfield-item-actions {
-    min-height: 50px;
     overflow: hidden;
     position: relative;
 }
