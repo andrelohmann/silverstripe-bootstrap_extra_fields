@@ -44,7 +44,7 @@ class BootstrapDropdownDateField extends DropdownDateField {
 
 	public function Field($properties = array()) {
             
-        $this->setConfig('dmyseparator', '</div><div class="col-sm-4">');
-        return '<div class="row"><div class="col-sm-4">'.parent::Field($properties).'</div></div>';
+        $this->setConfig('dmyseparator', '</p></div><div class="col-sm-4"><p>');
+        return '<div class="row"><div class="col-sm-4"><p>'.parent::Field($properties).'</p></div></div>';
 	}
 }
