@@ -1,0 +1,18 @@
+hr:
+  BootstrapFileField:
+    CHOOSEFILE: 'Odaberite datoteku' # Choose File Text on Upload Button
+  BootstrapLoadingFormAction:
+    LOADING: 'Učitavam...'
+  BootstrapAjaxModalForm:
+    LOADING: 'Učitavam...'
+  BootstrapAjaxForm:
+    LOADING: 'Učitavam...'
+  BootstrapCaptchaField:
+    VALIDATION: 'Nevažeći kod, pokušajte ponovo.'
+    PLACEHOLDER: 'Unesite prikazani kod'
+  BootstrapSemVerField:
+    VALIDATION: 'Nevažeći broj verzije.'
+  BootstrapUrlField:
+    VALIDATION: 'Neispravan url.'
+  BootstrapYoutubeField:
+    VALIDATION: 'Neispravan YouTube video id.'
